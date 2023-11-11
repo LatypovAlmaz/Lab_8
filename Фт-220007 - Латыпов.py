@@ -6,25 +6,25 @@ summa = []
 dis2 = []
 pri2 = []
 all_index_pri = []
-amount = int(input('Введите количество сотрудников компании: '))
+amount = int(input('Введите количество сотрудников компании (от 1 до 1000 включительно): '))
 #Проверка на ошибку
-while amount < 1 and  amount > 1000:
+while amount < 1 or amount > 1000:
     print('Ошибка!!!')
-    amount = int(input('Введите количество сотрудников компании: '))
+    amount = int(input('Введите количество сотрудников компании (от 1 до 1000 включительно): '))
 #Создал цикл для ввода данных о расстоянии до дома каждого сотрудника
 for i in range(amount):
-    distance = int(input('Введите расстояние для ' + str(i+1) + ' сотрудника: '))
-    while distance < 1 and  distance > 1000:
+    distance = int(input('Введите расстояние для ' + str(i+1) + ' сотрудника (от 1 до 1000 включительно): '))
+    while distance < 1 or distance > 1000:
         print('Ошибка!!!')
-        distance = int(input('Введите расстояние для ' + str(i) + 'сотрудника: '))
+        distance = int(input('Введите расстояние для ' + str(i) + 'сотрудника (от 1 до 1000 включительно): '))
     dis.append(distance)
     dis2.append(distance)
 #Создал цикл для ввода тарифов на такси
 for j in range(0, amount):
-    price = int(input('Введите тариф для ' + str(j+1) + ' такси: '))
-    while price < 1 and price > 10000:
+    price = int(input('Введите тариф для ' + str(j+1) + ' такси (от 1 до 10000 включительно): '))
+    while price < 1 or price > 10000:
         print('Ошибка!!!')
-        price = int(input('Введите тариф для ' + str(j+1) + ' такси: '))
+        price = int(input('Введите тариф для ' + str(j+1) + ' такси (от 1 до 10000 включительно): '))
     pri.append(price)
     pri2.append(price)
 #Отсортировал списки, список с расстояниями по возрастанию, а список
