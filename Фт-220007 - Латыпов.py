@@ -1,19 +1,17 @@
-#Создал списки для записи данных о расстоянии и тарифах
+#Создал списки для последующего ввода данных о расстоянии и тарифах подключил библиотеку num2words
 from num2words import num2words
 dis = []
 pri = []
 summa = []
 dis2 = []
 pri2 = []
-all_index_dis = []
 all_index_pri = []
-#Ввод количества сотрудников
 amount = int(input('Введите количество сотрудников компании: '))
 #Проверка на ошибку
 while amount < 1 and  amount > 1000:
     print('Ошибка!!!')
     amount = int(input('Введите количество сотрудников компании: '))
-
+#Создал цикл для ввода данных о расстоянии до дома каждого сотрудника
 for i in range(amount):
     distance = int(input('Введите расстояние для ' + str(i+1) + ' сотрудника: '))
     while distance < 1 and  distance > 1000:
@@ -21,7 +19,7 @@ for i in range(amount):
         distance = int(input('Введите расстояние для ' + str(i) + 'сотрудника: '))
     dis.append(distance)
     dis2.append(distance)
-
+#Создал цикл для ввода тарифов на такси
 for j in range(0, amount):
     price = int(input('Введите тариф для ' + str(j+1) + ' такси: '))
     while price < 1 and price > 10000:
@@ -29,28 +27,21 @@ for j in range(0, amount):
         price = int(input('Введите тариф для ' + str(j+1) + ' такси: '))
     pri.append(price)
     pri2.append(price)
-
-# print('Расстояние ' + str(dis))
-# print('Тариф ' + str(pri))
-
+#Отсортировал списки, список с расстояниями по возрастанию, а список
+#с тарифами по убывания
 dis2.sort()
 pri2.sort(reverse = True)
-
+#Создал цикл для нахождения стоимости выгодных поездок
 for a in range(0, amount):
     itog = dis2[a] * pri2[a]
     summa.append(itog)
 summa.append(sum(summa))
-
-pri3 = pri2.copy()
-
-for ind_dis2 in dis2:
-    index_dis = dis.index(ind_dis2)
-    all_index_dis.append(index_dis + 1)
+#Создал цикл, в котором исключается выбор одного и того же такси нескрлькими сотрудниками
 for ind_pri2 in pri2:
     index_pri = pri.index(ind_pri2)
     pri[index_pri] = 0
     all_index_pri.append(index_pri + 1)
-
+#Выбор правильного окончания слова "рубль"
 rub = ''
 
 rub_2_to_4 = [2, 3, 4]
@@ -67,9 +58,3 @@ else:
 print('1. ' + str(all_index_pri))
 print('2. ' + str(summa[-1]))
 print('3. ' + num2words(summa[-1], lang='ru') + rub)
-
-
-print('Отсортированное расстояние ' + str(dis2))
-print('Отсортированный тариф ' + str(pri2))
-print('Стоимость ' + str(summa))
-print('Список по такси ' + str(all_index_pri))
